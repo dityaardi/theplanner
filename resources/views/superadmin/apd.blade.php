@@ -33,7 +33,7 @@
                 </thead>
 
                 <tbody>
-                    @foreach ($arma as $index=>$a)
+                    @foreach ($apd as $index=>$a)
                     <tr align="center">
                         <td scope="row">{{ $index + $apd->firstItem() }}</td>
                         <td>{{$a->idapd}}</td>

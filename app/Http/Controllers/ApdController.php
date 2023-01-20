@@ -17,7 +17,7 @@ class ApdController extends Controller
         $apd = ModelAPD::orderby('idapd', 'ASC')->paginate(5);
 
         return view('superadmin.apd',[
-            'arma'=>$apd
+            'apd'=>$apd
         ]);
     }
 

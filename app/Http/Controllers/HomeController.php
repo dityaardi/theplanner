@@ -11,6 +11,7 @@ use App\Models\ModelJenis_Program;
 use App\Models\ModelKegiatan;
 use App\Models\ModelKonsumsi;
 use App\Models\ModelKonsumsiDetail;
+use App\Models\ModelMatrixKegiatan;
 use App\Models\ModelModa_Pengadaan;
 use App\Models\ModelNon_Diklat;
 use App\Models\ModelPembiayaan;
@@ -30,7 +31,15 @@ class HomeController extends Controller
     {
         return view('page.home',[
             'kegiatan' => ModelKegiatan::orderby('idkegiatan', 'DESC')->paginate(10),
-            'belanja' => ModelRencanaBelanja::orderby('idbelanjabarang', 'DESC')->paginate(10)
+            'belanja' => ModelRencanaBelanja::orderby('idbelanjabarang', 'DESC')->paginate(10),
+            'totalkegiatan' => ModelKegiatan::count(),
+            'kegiatanmenunggu' => ModelKegiatan::where('status','menunggu')->count(),
+            'kegiatanditerima' => ModelKegiatan::where('status','diterima')->count(),
+            'kegiatanditolak' => ModelKegiatan::where('status','ditolak')->count(),
+            'totalrencanabb' => ModelRencanaBelanja::count(),
+            'rencanabbmenunggu' => ModelRencanaBelanja::where('status','menunggu')->count(),
+            'rencanabbditerima' => ModelRencanaBelanja::where('status','diterima')->count(),
+            'rencanabbditolak' => ModelRencanaBelanja::where('status','ditolak')->count(),
         ]);
     }
 
@@ -49,6 +58,20 @@ class HomeController extends Controller
 
     public function storeactivity(Request $request)
     {
+        foreach ($request->tanggal as $key => $tanggal) {
+            foreach ($request->waktumulai as $key => $start) {
+                ModelMatrixKegiatan::create([
+                    'idkegiatan'    => '1',
+                    'tanggal'       => $tanggal,
+                    'waktumulai'    => $start,
+                    'waktuselesai'  => $request->waktuselesai,
+                    'agenda'        => $request->agenda,
+                    'pic'           => $request->pic,
+                    'jamperjp'      => $request->jamperjp,
+                    'lokasi'        => $request->lokasi
+                ]);
+            }
+        }
                                                         //method menambah kegiatan
         $KegiatanBaru = ModelKegiatan::create([
             'namakegiatan' => $request->namakegiatan,
@@ -102,6 +125,9 @@ class HomeController extends Controller
             'status' => 'menunggu'
         ]);
         $idkegiatan = $KegiatanBaru->idkegiatan; //code mengambil idkegiatan yg baru di buat
+
+        //method tambah matrix kegiatan
+        
 
                                                         //method tambah Pembiayaan Detail
         foreach ($request->idpembiayaan as $idpembiayaan) {

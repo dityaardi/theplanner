@@ -3,23 +3,54 @@
 
 @section('content')
 <div class="col-lg-12 mt-5">
-    <div class="card card-shadow card-bordered">
-        <div class="card-header" style="background-color: #297bbf;">
-            <h4 class="text-center text-white">Progress Validasi Kegiatan</h4>
-        </div>
-        <div class="card-body">
-            <div class="progress_area">
-                <h5 class="header-title">Total Progress : 10 Kegiatan</h5>
-                <div class="progress" style="height: 20px;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 20%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">2 Kegiatan</div>
-                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: 50%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">5 Kegiatan</div>
-                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">3 Kegiatan</div>
+    <div class="d-flex justify-content-center">
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <div class="card card-shadow card-bordered">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="header-title">Total Rencana Kegiatan: {{$totalkegiatan}} Rencana</h4>
+                            <a href="#kegiatan"><u>Lihat Rencana</u></a>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="col-md-4 bg-warning text-white text-center">
+                                Menunggu : <h4>{{$kegiatanmenunggu}}</h4>
+                            </div>
+                            <div class="col-md-4 bg-success text-white text-center">
+                                Diterima : <h4>{{$kegiatanditerima}}</h4>
+                            </div>
+                            <div class="col-md-4 bg-danger text-white text-center">
+                                Ditolak : <h4>{{$kegiatanditolak}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-shadow card-bordered">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="header-title">Total Rencana Belanja Barang: {{$totalrencanabb}} Rencana</h4>
+                            <a href="#belanja"><u>Lihat Rencana</u></a>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="col-md-4 bg-warning text-white text-center">
+                                Menunggu : <h4>{{$rencanabbmenunggu}}</h4>
+                            </div>
+                            <div class="col-md-4 bg-success text-white text-center">
+                                Diterima : <h4>{{$rencanabbditerima}}</h4>
+                            </div>
+                            <div class="col-md-4 bg-danger text-white text-center">
+                                Ditolak : <h4>{{$rencanabbditolak}}</h4>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card card-shadow card-bordered mt-5">
+    <div class="card card-shadow card-bordered mt-5" id="kegiatan">
         <div class="card-header" style="background-color: #297bbf;">
             <h4 class="text-center text-white">Daftar Rencana Kegiatan</h4>
         </div>
@@ -64,15 +95,15 @@
                     </table>
                 </div>
             </div>
-        </div>
-        <div class="card-footer card-bordered-top">
-            <a href="/tambah-kegiatan">
-                <button type="button" class="btn btn-rounded btn-block btn-primary container">Tambah Rencana Kegiatan</button>
-            </a>
+            <div class="d-flex justify-content-end mt-3">
+                <a href="/tambah-kegiatan">
+                    <button type="button" class="btn btn-rounded btn-block btn-primary container">Tambah Rencana Kegiatan</button>
+                </a>
+            </div>
         </div>
     </div>
 
-    <div class="card card-shadow card-bordered mt-5">
+    <div class="card card-shadow card-bordered mt-5" id="belanja">
         <div class="card-header" style="background-color: #297bbf;">
             <h4 class="text-center text-white">Daftar Rencana Belanja Barang</h4>
         </div>
@@ -117,11 +148,11 @@
                     </table>
                 </div>
             </div>
-        </div>
-        <div class="card-footer card-bordered-top">
-            <a href="/tambah-rencana-belanja">
-                <button type="button" class="btn btn-rounded btn-block btn-primary container">Tambah Rencana Belanja</button>
-            </a>
+            <div class="d-flex justify-content-end mt-3">
+                <a href="/tambah-rencana-belanja">
+                    <button type="button" class="btn btn-rounded btn-block btn-primary container">Tambah Rencana Belanja</button>
+                </a>
+            </div>
         </div>
     </div>
 </div>

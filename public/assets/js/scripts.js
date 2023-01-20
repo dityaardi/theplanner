@@ -430,26 +430,26 @@ function cal() {
                 break;
         }
 
-        var tanggal = hari + ", " + tanggal + " " + bulan + " " + tahun;
+        var tgl = hari + ",&nbsp;" + tanggal + "&nbsp;" + bulan + "&nbsp;" + tahun;
 
         outputHTML +=
             "<tr><td rowspan='4'>" +
             s +
-            "<td rowspan='4'><input type=date id='tanggal'><td><input type=time><td><input type=time><td><input type=text><td><input type=text><td><input type=text><td><input type=text>" +
+            "<td rowspan='4'><input type=text value="+ tgl +" name='tanggal[]' readonly><td><input type=time name='waktumulai[]'><td><input type=time name='waktuselesai[]'><td><input type=text name='agenda[]'><td><input type=text name='pic[]'><td><input type=text name='jamperjp[]'><td><input type=text name='lokasi[]'>" +
             "</td></td></td></td></td></td>" +
             "</td></tr>"+
-            "<td><input type=time><td><input type=time><td><input type=text><td><input type=text><td><input type=text><td><input type=text>" +
+            "<td><input type=time name='waktumulai[]'><td><input type=time name='waktuselesai[]'><td><input type=text name='agenda[]'><td><input type=text name='pic[]'><td><input type=text name='jamperjp[]'><td><input type=text name='lokasi[]'>" +
             "</td></td></td></td></td></td>" +
             "</td></tr>"+
-            "<td><input type=time><td><input type=time><td><input type=text><td><input type=text><td><input type=text><td><input type=text>" +
+            "<td><input type=time name='waktumulai[]'><td><input type=time name='waktuselesai[]'><td><input type=text name='agenda[]'><td><input type=text name='pic[]'><td><input type=text name='jamperjp[]'><td><input type=text name='lokasi[]'>" +
             "</td></td></td></td></td></td>" +
             "</td></tr>"+
-            "<td><input type=time><td><input type=time><td><input type=text><td><input type=text><td><input type=text><td><input type=text>" +
+            "<td><input type=time name='waktumulai[]'><td><input type=time name='waktuselesai[]'><td><input type=text name='agenda[]'><td><input type=text name='pic[]'><td><input type=text name='jamperjp[]'><td><input type=text name='lokasi[]'>" +
             "</td></td></td></td></td></td>" +
             "</td></tr>";
         outputHTML2 +=
             "<div class='row col-sm-12 pt-1'><p class='col-sm-4'>&nbsp;&nbsp;</p><div class='row col-sm-8'><div class='col-sm-2 pt-1'>" +
-            tanggal +
+            tgl +
             "</div><input type=time>&nbsp;-&nbsp;<input type=time></div></div>";
         tglmulai.setDate(tglmulai.getDate() + 1);
     }
