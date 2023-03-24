@@ -45,12 +45,12 @@
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block">
-                                <img src="{{asset('images/login.jpg')}}" style="width:100%; height:100%">
+                                <img src="{{asset('images/loginn.jpg')}}" style="width:100%; height:100%">
                             </div>
                             <div class="col-lg-6">
                                 <div class="p-4">
                                     <div class="text-center">
-                                        <img src="{{ asset('images/lgoo.png') }}" style="width:40%;">
+                                        <img src="{{ asset('images/logo.png') }}" style="width:40%;">
                                         <h5 class="text-gray-900 mb-4">Web Based for Activity Planning</h5>
                                         <h6 class="text-gray-900 mb-3">LOGIN</h6>
                                     </div>
@@ -65,7 +65,7 @@
                                     <form action="/" method="POST">
                                         @csrf
                                         <div class="form-floating">
-                                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" placeholder="email" autofocus required>
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" placeholder="Email" autofocus required>
                                             @error('email')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -73,7 +73,7 @@
                                             @enderror
                                         </div>
                                         <p>
-                                        <div class="form-floating">
+                                        <div class="form-floating pt-3">
                                             <input type="password" class="form-control rounded-bottom" name="password" id="password" required placeholder="Password">
                                         </div>
 
