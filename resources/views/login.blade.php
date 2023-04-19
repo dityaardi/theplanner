@@ -1,110 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html :class="{ 'theme-dark': !dark }" x-data="data()" lang="en">
 
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <link rel="icon" href="{{asset('/images/lgoo.png')}}">
-    <title>LogIn</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-
-    <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
-    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/metisMenu.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/slicknav.min.css')}}">
-    <!-- others css -->
-    <link rel="stylesheet" href="{{asset('assets/css/typography.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/default-css.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/styles.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
-    <!-- modernizr css -->
-    <script src="{{asset('assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In - ActPlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{asset('assets-tlw/css/tailwind.output.css')}}" />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script src="{{asset('assets-tlw/js/init-alpine.js')}}"></script>
 </head>
 
-<body class="bg-primary">
+<body>
+    <div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
+        <div class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
+            <div class="flex flex-col overflow-y-auto md:flex-row">
+                <div class="h-32 md:h-auto md:w-1/2">
+                    <img aria-hidden="true" class="object-cover w-full h-full dark:hidden" src="{{asset('images/loginn.jpg')}}" alt="Office" />
+                    <img aria-hidden="true" class="hidden object-cover w-full h-full dark:block" src="{{asset('images/loginn.jpg')}}" alt="Office" />
+                </div>
+                <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
+                    <div class="text-center w-full">
+                        <img src="{{asset('images/logo.png')}}" style="width: 25%;" class="mx-auto" alt="" srcset="">
+                        <button class="rounded-md focus:outline-none focus:shadow-outline-purple" @click="toggleTheme" aria-label="Toggle color mode">
+                            <template x-if="!dark">
+                                <svg class="w-5 h-5" aria-hidden="true" fill="white" viewBox="0 0 20 20">
+                                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                                </svg>
+                            </template>
+                            <template x-if="dark">
+                                <svg class="w-5 h-5" aria-hidden="true" fill="black" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                                </svg>
+                            </template>
+                        </button>
+                        <h1 class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
+                            LOG IN
+                        </h1>
+                        <form action="/" method="post" class="text-left">
+                            @csrf
+                            <label class="block text-sm">
+                                <span class="text-gray-700 dark:text-gray-400">Email</span>
+                                <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" name="email" value="{{old('email')}}" placeholder="Email" autofocus required autocomplete="off" />
+                            </label>
+                            <label class="block mt-4 text-sm">
+                                <span class="text-gray-700 dark:text-gray-400">Password</span>
+                                <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" name="password" placeholder="Password" type="password" />
+                            </label>
 
-    <div class="container">
-
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
-
-            <div class="col-xl-10 col-lg-12 col-md-9">
-
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block">
-                                <img src="{{asset('images/loginn.jpg')}}" style="width:100%; height:100%">
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="p-4">
-                                    <div class="text-center">
-                                        <img src="{{ asset('images/logo.png') }}" style="width:40%;">
-                                        <h5 class="text-gray-900 mb-4">Web Based for Activity Planning</h5>
-                                        <h6 class="text-gray-900 mb-3">LOGIN</h6>
-                                    </div>
-                                    @if(session()->has('failed'))
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert">
-                                        <i class="bi bi-x-square-fill"></i>{{ session('failed') }}
-                                        <button type="button" class="close btn-sm" data-dismiss="alert" aria-label="Close">
-                                            <span class="fa fa-times"></span>
-                                        </button>
-                                    </div>
-                                    @endif
-                                    <form action="/" method="POST">
-                                        @csrf
-                                        <div class="form-floating">
-                                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" placeholder="Email" autofocus required>
-                                            @error('email')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                        <p>
-                                        <div class="form-floating pt-3">
-                                            <input type="password" class="form-control rounded-bottom" name="password" id="password" required placeholder="Password">
-                                        </div>
-
-                                        <button class="w-100 btn btn-lg btn-success mt-3" type="SUBMIT">LOGIN</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                            <!-- You should use a button here, as the anchor is only used for the example  -->
+                            <button class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple" type="submit">
+                                Log in
+                            </button>
+                        </form>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
-    <!-- jquery latest version -->
-    <script src="{{asset('assets/js/vendor/jquery-2.2.4.min.js')}}"></script>
-    <!-- bootstrap 4 js -->
-    <script src="{{asset('assets/js/popper.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('assets/js/metisMenu.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.slimscroll.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.slicknav.min.js')}}"></script>
-
-    <!-- others plugins -->
-    <script src="{{asset('assets/js/plugins.js')}}"></script>
-    <script src="{{asset('assets/js/scripts.js')}}"></script>
-
 </body>
 
 </html>

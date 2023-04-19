@@ -29,7 +29,7 @@ Route::get('/register', function(){
     return view('register');
 });
 Route::post('/register', [LogController::class,'store']);
-Route::post('/logout', [LogController::class,'logout']);
+Route::get('/logout', [LogController::class,'logout']);
 
 Route::get('/home',[HomeController::class,'index'])->name('home')->middleware('auth');
 Route::get('/tambah-kegiatan',[HomeController::class,'newactivity']);
