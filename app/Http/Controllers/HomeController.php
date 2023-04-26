@@ -43,7 +43,17 @@ class HomeController extends Controller
         ]);
     }
 
-    public function newactivity()
+    public function rencanakegiatan(){
+        return view('page.kegiatan',[
+            'kegiatan' => ModelKegiatan::orderby('idkegiatan', 'DESC')->paginate(10),
+            'totalkegiatan' => ModelKegiatan::count(),
+            'kegiatanmenunggu' => ModelKegiatan::where('status','menunggu')->count(),
+            'kegiatanditerima' => ModelKegiatan::where('status','diterima')->count(),
+            'kegiatanditolak' => ModelKegiatan::where('status','ditolak')->count()
+        ]);
+    }
+
+    public function rencanakegiatannew()
     {
         return view('page.create_activity', [
             'jenprog' => ModelJenis_Program::all(),
@@ -56,7 +66,7 @@ class HomeController extends Controller
         ]);
     }
 
-    public function storeactivity(Request $request)
+    public function rencanakegiatanstore(Request $request)
     {
         foreach ($request->tanggal as $key => $tanggal) {
             foreach ($request->waktumulai as $key => $start) {
@@ -230,8 +240,18 @@ class HomeController extends Controller
             'konsumsi' => $konsumsidetail
         ]);
     }
+
+    public function rencanabelanja(){
+        return view('page.belanja',[
+            'belanja' => ModelRencanaBelanja::orderby('idbelanjabarang', 'DESC')->paginate(10),
+            'totalbelanja' => ModelRencanaBelanja::count(),
+            'rencanabbmenunggu' => ModelRencanaBelanja::where('status','menunggu')->count(),
+            'rencanabbditerima' => ModelRencanaBelanja::where('status','diterima')->count(),
+            'rencanabbditolak' => ModelRencanaBelanja::where('status','ditolak')->count()
+        ]);
+    }
     
-    public function rencanabelanja()
+    public function rencanabelanjanew()
     {
         return view('page.form_belanja', [
             'jenbar' => ModelJenis_Barang::all(),

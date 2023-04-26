@@ -32,12 +32,14 @@ Route::post('/register', [LogController::class,'store']);
 Route::get('/logout', [LogController::class,'logout']);
 
 Route::get('/home',[HomeController::class,'index'])->name('home')->middleware('auth');
-Route::get('/tambah-kegiatan',[HomeController::class,'newactivity']);
-Route::post('/tambah-kegiatan',[HomeController::class,'storeactivity']);
+Route::get('/rencana-kegiatan',[HomeController::class,'rencanakegiatan']);
+Route::get('/tambah-kegiatan',[HomeController::class,'rencanakegiatannew']);
+Route::post('/tambah-kegiatan',[HomeController::class,'rencanakegiatanstore']);
 Route::get('/detail-rencana-kegiatan/{idkegiatan}',[HomeController::class,'detailkegiatan']);
 Route::get('/cetak-kegiatan/{idkegiatan}',[HomeController::class,'cetakkegiatan']);
 
-Route::get('/tambah-rencana-belanja',[HomeController::class,'rencanabelanja']);
+Route::get('/rencana-belanja',[HomeController::class,'rencanabelanja']);
+Route::get('/tambah-rencana-belanja',[HomeController::class,'rencanabelanjanew']);
 Route::post('/tambah-rencana-belanja',[HomeController::class,'rencanabelanjastore']);
 Route::get('/detail-rencana-belanja/{idbelanjabarang}',[HomeController::class,'detailrencanabelanja']);
 Route::get('/cetak-rencana-belanja/{idbelanjabarang}',[HomeController::class,'cetakrencanabelanja']);
